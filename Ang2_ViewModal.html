@@ -1,0 +1,42 @@
+<modal #modal>
+    <form novalidate (ngSubmit)="onSubmit(userFrm)" [formGroup]="userFrm">
+        <modal-header [show-close]="true">
+            <h4 class="modal-title">{{modalTitle}}</h4>
+        </modal-header>
+        <modal-body>
+            <div class="form-group">
+                <div>
+                    <span>User Name</span>
+                    <input type="text" class="form-control" placeholder="User Name" formControlName="UserId" [readonly]="isReadOnly">
+                </div>
+                <div>
+                    <span>Password</span>
+                    <input type="password" class="form-control" placeholder="Password" formControlName="Password" [readonly]="isReadOnly">
+                </div>
+                <div>
+                    <span>First Name*</span>
+                    <input type="text" class="form-control" placeholder="First Name" formControlName="FirstName">
+                </div>
+                <div>
+                    <span>Last Name*</span>
+                    <input type="text" class="form-control" placeholder="Last Name" formControlName="LastName">
+                </div>
+                <div>
+                    <span>Phone</span>
+                    <input type="text" class="form-control" placeholder="(123) 456-7890" formControlName="Phone" [textMask]="{mask: mask}" 
+                           pattern="\(\d{3}\) \d{3}-\d{4}">
+                </div>
+                <div>
+                    <span>Email</span>
+                    <input type="text" class="form-control" placeholder="Email" formControlName="Email">
+                </div>
+            </div>
+        </modal-body>
+        <modal-footer>
+            <div>
+                <a class="btn btn-default" (click)="modal.dismiss()">Cancel</a>
+                <button type="submit" [disabled]="userFrm.invalid" class="btn btn-primary">{{modalBtnTitle}}</button>
+            </div>
+        </modal-footer>
+    </form>
+</modal>
